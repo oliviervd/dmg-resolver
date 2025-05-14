@@ -1,11 +1,11 @@
 # RESOLVER - DESIGN MUSEUM GENT
 
-Node-based service, part of the museum data infrastructure, to maintain a healthy upstream for the [REST-API](https://github.com/designmuseumgent/dmg-rest-api) of Design Museum Gent. This service is running inhouse on a recycled (otherwise obsolete) mac Mini which is rebooted to run DEBIAN.
+Node-based service, part of the museum data infrastructure, to maintain a healthy upstream for the [REST-API](https://github.com/designmuseumgent/dmg-rest-api) of Design Museum Gent. 
 
 ## WHAT IT DOES.
 
-- each month (first day of the month) it does a full check for the museums' postgres database is vetted for inconsistencies and errors - to ensure a healthy upstream.
-- each week (on sunday) it rechecks those objects that have recieved a status of UNHEALTHY
+- a full check for the museums' postgres database is vetted for inconsistencies and errors - to ensure a healthy upstream.
+- each week it rechecks those objects that have recieved a status of UNHEALTHY
 - each day it checks only those items that have recieved a STATUS: UNKNOWN - these are usiually new objects that need to recieve a URI and resolving route
 - inconsistencies include (entity duplicates, HTTP Client and/or Server errors, misalignment between PID and metadata (due to changes in registration (fe. changing objectnumber) f.e.))
 - based on the switch cases (mentioned above), each endpoint is given a status (healthy / unhealthy)
